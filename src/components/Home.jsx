@@ -4,6 +4,7 @@ import NoteContext from "../context/notes/NoteContext";
 
 export const Home = () => {
   const context = useContext(NoteContext);
+  // eslint-disable-next-line no-unused-vars
   const {notes, setNotes} = context;
   return (
     <>
