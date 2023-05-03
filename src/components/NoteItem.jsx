@@ -5,10 +5,12 @@ export const NoteItem = (props) => {
   return (
     <>
       <div className="col-md-3">
-        <div class="card my-3">
-          <div class="card-body">
-            <h5 class="card-title">{note.title}</h5>
-            <p class="card-text">{note.description} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit similique minima neque numquam accusamus officia placeat. Eos maxime quas, quia assumenda cupiditate iusto qui, amet, omnis accusantium pariatur laboriosam ad.</p>
+        <div className="card my-3">
+          <div className="card-body">
+            <h5 className="card-title">{note.title}</h5>
+            <p className="card-text">{note.description}</p>
+            <i className="fa-solid fa-pen-to-square mx-2"></i>
+            <i className="fa-solid fa-trash mx-2"></i>
           </div>
         </div>
       </div>
