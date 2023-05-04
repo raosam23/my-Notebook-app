@@ -5,8 +5,7 @@ import AddNote from "./AddNote";
 
 export default function Notes() {
   const context = useContext(NoteContext);
-  // eslint-disable-next-line no-unused-vars
-  const { notes, addNote } = context;
+  const { notes } = context;
   return (
     <>
       <AddNote />
