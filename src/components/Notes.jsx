@@ -2,10 +2,16 @@ import React, { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import { NoteItem } from "./NoteItem";
 import AddNote from "./AddNote";
+import { useEffect } from "react";
 
 export default function Notes() {
   const context = useContext(NoteContext);
-  const { notes } = context;
+  const { notes, getNote } = context;
+  useEffect(() => {
+    getNote();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
   return (
     <>
       <AddNote />
