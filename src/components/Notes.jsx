@@ -6,15 +6,17 @@ import { useEffect } from "react";
 
 export default function Notes() {
   const context = useContext(NoteContext);
-  const { notes, getNote } = context;
+  const { notes, getNote, editNote } = context;
   useEffect(() => {
     getNote();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ref = useRef(null);
+  const refClose = useRef(null);
 
   const [note, setNote] = useState({
+    id : "",
     etitle: "",
     edescription: "",
     etag: "",
@@ -23,6 +25,7 @@ export default function Notes() {
   const updateNote = (currentNote) => {
     ref.current.click();
     setNote({
+      id : currentNote._id,
       etitle: currentNote.title,
       edescription: currentNote.description,
       etag: currentNote.tag,
@@ -34,8 +37,9 @@ export default function Notes() {
   };
 
   const handleOnClick = (event) => {
-    event.preventDefault();
-    console.log("Updating the note", note);
+    // console.log("Updating the note", note);
+    editNote(note.id, note.etitle, note.edescription, note.etag);
+    refClose.current.click();
   };
 
   return (
@@ -122,6 +126,7 @@ export default function Notes() {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
+                ref = {refClose}
               >
                 Close
               </button>
