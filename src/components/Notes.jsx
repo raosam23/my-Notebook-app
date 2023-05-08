@@ -16,7 +16,7 @@ export default function Notes() {
   const refClose = useRef(null);
 
   const [note, setNote] = useState({
-    id : "",
+    id: "",
     etitle: "",
     edescription: "",
     etag: "",
@@ -25,7 +25,7 @@ export default function Notes() {
   const updateNote = (currentNote) => {
     ref.current.click();
     setNote({
-      id : currentNote._id,
+      id: currentNote._id,
       etitle: currentNote.title,
       edescription: currentNote.description,
       etag: currentNote.tag,
@@ -91,6 +91,8 @@ export default function Notes() {
                     name="etitle"
                     value={note.etitle}
                     onChange={handleOnChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -104,6 +106,8 @@ export default function Notes() {
                     name="edescription"
                     value={note.edescription}
                     onChange={handleOnChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -126,11 +130,16 @@ export default function Notes() {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
-                ref = {refClose}
+                ref={refClose}
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleOnClick}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleOnClick}
+                disabled = {note.etitle.length<5 || note.edescription.length<5}
+              >
                 Update Note
               </button>
             </div>
@@ -139,6 +148,9 @@ export default function Notes() {
       </div>
       <div className="row my-3">
         <h2>Your Notes</h2>
+        <div className="container mx-2">
+          {notes.length === 0 && "No notes to display"}
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem key={note._id} note={note} updateNote={updateNote} />

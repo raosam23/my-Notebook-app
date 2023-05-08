@@ -36,23 +36,16 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
+    const note = await response.json();
+    setNotes(notes.concat(note));
     // Logic to add new note
     // console.log("Adding a new note");
-    let note = {
-      _id: "644e42fe0527e90b5e9e5a26",
-      user: "6447b6df549f37767bd4ede9",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2023-05-04T11:50:18.577Z",
-      __v: 0,
-    };
-    setNotes(notes.concat(note));
   };
 
   // Delete a Note
   const deleteNote = async (id) => {
     // API Call
+    // eslint-disable-next-line no-unused-vars
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
@@ -61,8 +54,8 @@ const NoteState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ0N2I2ZGY1NDlmMzc3NjdiZDRlZGU5In0sImlhdCI6MTY4MjYxMTI1OX0.zj5fS-4jHWf80I2vv3j9iqmhceh_RE7cEE4RIdVDsP4",
       }
     });
-    const json = await response.json();
-    console.log(json);
+    // const json = await response.json();
+    // console.log(json);
     // console.log("Deleted Note with id " + id);
     let newNotes = notes.filter((note) => note._id !== id);
     setNotes(newNotes);
