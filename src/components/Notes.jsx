@@ -4,7 +4,7 @@ import { NoteItem } from "./NoteItem";
 import AddNote from "./AddNote";
 import { useEffect } from "react";
 
-export default function Notes() {
+export default function Notes(props) {
   const context = useContext(NoteContext);
   const { notes, getNote, editNote } = context;
   useEffect(() => {
@@ -40,11 +40,12 @@ export default function Notes() {
     // console.log("Updating the note", note);
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    props.showAlert("Note Updated Succesfully","success");
   };
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert = {props.showAlert} />
       {/* <!-- Button trigger modal --> */}
       <button
         type="button"
@@ -153,7 +154,7 @@ export default function Notes() {
         </div>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} note={note} updateNote={updateNote} />
+            <NoteItem key={note._id} note={note} updateNote={updateNote} showAlert = {props.showAlert} />
           );
         })}
       </div>
