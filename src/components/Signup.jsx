@@ -42,7 +42,8 @@ export const Signup = (props) => {
     }
   };
   return (
-    <div className="container">
+    <div className="container mt-3">
+      <h2 className="my-3">Signup</h2>
       <form onSubmit={handleOnSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -105,7 +106,7 @@ export const Signup = (props) => {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Signup
         </button>
       </form>
     </div>
