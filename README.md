@@ -1,3 +1,7 @@
+# my-Notebook-app
+My notebook app is a react app which helps user in managing notes on the fly.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
